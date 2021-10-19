@@ -1,16 +1,16 @@
 # RDMS Database
 
-1. [키 종류](Database\키.md)
-2. [조인](Database\조인.md)
-3. [이상 (anomaly)](Database\Anomaly.md)
-4. [DB Index](Database\db_index.md)
-5. [정규화 (normalization)](Database\정규화.md)
-6. [트랜잭션](Database\트랜잭션.md)
-7. [Partitioning](Database\파티션.md)
+1. [키 종류](키.md)
+2. [조인](조인.md)
+3. [이상 (anomaly)](Anomaly.md)
+4. [DB Index](db_index.md)
+5. [정규화 (normalization)](정규화.md)
+6. [트랜잭션](트랜잭션.md)
+7. [Partitioning](파티션.md)
 8. 모델링
-9. [효율적인 쿼리 작성-1](Database\효율적인_쿼리_작성_Tip-1.md)
-10. [효율적인 쿼리 작성-2](Database\효율적인_쿼리_작성_Tip-2.md)
-11. [ETC](Database\운영Tip.md)
+9. [효율적인 쿼리 작성-1](효율적인_쿼리_작성_Tip-1.md)
+10. [효율적인 쿼리 작성-2](효율적인_쿼리_작성_Tip-2.md)
+11. [ETC](운영Tip.md)
 
 
 
