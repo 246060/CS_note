@@ -31,7 +31,7 @@
   - Master - Master
   - Master - Slave
   - Query Routing
-- 데이터 마이그레이션
+- 마이그레이션
   - 같은 타입의 디비
     - mysql -> mysql
   - 타입이 다른 디비
