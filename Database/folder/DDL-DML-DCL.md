@@ -1,4 +1,4 @@
-# DDL(Data Definition Language) - 
+# DDL(Data Definition Language)
  - 데이터베이스를 정의하는 언어
  - 골격을 결정하는 역할
  - 조작 단위: 테이블 이상의 객체
@@ -55,6 +55,6 @@
 
 
 
-
-
-https://server-talk.tistory.com/159
+<br/><br/><br/>
+Reference
+- https://server-talk.tistory.com/159
