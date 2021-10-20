@@ -1,4 +1,5 @@
 # 운영 고려 사항
+- 라이센스
 - cloud vs on-premise 
 - 하드웨어
   - CPU
@@ -7,6 +8,8 @@
 - 데이터 저장 위치
 - 데이터 백업
   - 방법
+    - 전체 백업
+    - 증분 백업
   - 주기
 - 로그
   - 에러로그
@@ -27,10 +30,11 @@
   - 비밀번호 관리 방법
 - 데이터 복구 조치
   - HA
-- Replication
-  - Master - Master
-  - Master - Slave
-  - Query Routing
+- 이중화
+  - Replication
+    - Master - Master
+    - Master - Slave
+    - Query Routing
 - 마이그레이션
   - 같은 타입의 디비
     - mysql -> mysql
