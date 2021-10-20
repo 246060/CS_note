@@ -31,7 +31,14 @@
   - Master - Master
   - Master - Slave
   - Query Routing
-- ETL
+- 데이터 마이그레이션
+  - 같은 타입의 디비
+    - mysql -> mysql
+  - 타입이 다른 디비
+    - mysql -> postgresql
+    - mysql -> oracle
+    - mysql -> hadoop
+    - mysql -> elasticsearch
   - 운영 서비스 -> DATA LAKE/DW
   - [DataLake vs DataWarehouse vs DataMart](https://rk1993.tistory.com/entry/DataLake-VS-DataWarehouse-VS-DataMart-%EB%B9%84%EA%B5%90)
 - 최적화
