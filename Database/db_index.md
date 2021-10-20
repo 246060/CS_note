@@ -94,6 +94,9 @@ Index에서는 Delete가 발생한 후, 새로운 작업의 Insert 작업 (2배�
 ## B-Tree
 [참조](https://helloinyong.tistory.com/296)
 
+
+
+
 ### DB 인덱스로 B-Tree가 가장 적합한 이유
 
 1. 항상 정렬된 상태로 특정 값보다 크고 작은 부등호 연산에 문제가 없다. 
@@ -107,4 +110,10 @@ Index에서는 Delete가 발생한 후, 새로운 작업의 Insert 작업 (2배�
 
 
 
+
+<br/><br/><br/><br/>
+
+Reference
+- https://lalwr.blogspot.com/2016/02/db-index.html
+- https://gyoogle.dev/blog/
 
