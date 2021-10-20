@@ -4,16 +4,16 @@
  2. [DML 예제](folder/dml-example.md)
  3. [키 종류](folder/키.md) 
  4. [조인](folder/조인.md)
- 5. [DB Index](folder/db_index.md)
- 6. [이상 (anomaly)](folder/Anomaly.md)
- 7. [함수 종속성](folder/함수_종속성.md)
- 8. [정규화 (normalization)](folder/정규화.md)
- 9. [트랜잭션](folder/트랜잭션.md)
- 10. [Partitioning](folder/파티션.md)
- 11. 모델링
+ 5. [Index](folder/db_index.md)
+ 6. [모델링](folder/모델링.md)
+ 7. [이상 현상](folder/Anomaly.md)
+ 8. [함수 종속성](folder/함수_종속성.md)
+ 9.  [정규화](folder/정규화.md)
+ 10. [트랜잭션](folder/트랜잭션.md)
+ 11. [Partitioning](folder/파티션.md)
  12. [효율적인 쿼리 작성-1](folder/효율적인_쿼리_작성_Tip-1.md)
  13. [효율적인 쿼리 작성-2](folder/효율적인_쿼리_작성_Tip-2.md)
- 14. [ETC](folder/운영Tip.md)
+ 14. [운영 고려사항](folder/운영Tip.md)
 
 
 

@@ -1,13 +1,38 @@
-# 로그 
-- 에러 로그 
-- 쿼리 로그 
-- UPDATE 쿼리 
-- slow query 로그 
-- 바이너리 로그
-
-# 데이터 복구 조치
-# Replication
-# HA
-
-# MySQL 서버 최적화 하기
-- [참조](https://dataonair.or.kr/db-tech-reference/d-guide/dbms-2/?mod=document&uid=62472)
+# 운영 고려 사항
+- cloud vs on-premise 
+- 하드웨어
+  - CPU
+  - RAM
+  - 보조기억장치
+- 데이터 저장 위치
+- 데이터 백업
+  - 방법
+  - 주기
+- 로그
+  - 에러로그
+  - 쿼리 로그
+  - UPDATE 쿼리 
+  - slow query 로그 
+  - 바이너리 로그
+- DOMAIN VS IP
+  - DNS
+  - ipv4 vs ipv6
+- SSL
+- 운영 모니터링 방법
+- 환경변수
+  - Timezone
+  - Charset
+- 계정
+  - ID 규칙
+  - 비밀번호 관리 방법
+- 데이터 복구 조치
+  - HA
+- Replication
+  - Master - Master
+  - Master - Slave
+  - Query Routing
+- ETL
+  - 운영 서비스 -> DATA LAKE/DW
+  - [DataLake vs DataWarehouse vs DataMart](https://rk1993.tistory.com/entry/DataLake-VS-DataWarehouse-VS-DataMart-%EB%B9%84%EA%B5%90)
+- 최적화
+  - [MySQL 최적화](https://dataonair.or.kr/db-tech-reference/d-guide/dbms-2/?mod=document&uid=62472)
