@@ -23,3 +23,4 @@ Reference
  - https://dataonair.or.kr/db-tech-reference/d-guide/dbms-2/?mod=document&uid=62472
  - https://sakura.zzabu.net/tc/168
  - https://lalwr.blogspot.com/2016/02/db-index.html
+ - https://hoing.io/archives/category/database/mysql/
