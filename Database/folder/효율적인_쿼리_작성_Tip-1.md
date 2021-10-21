@@ -145,6 +145,7 @@ WHERE EXISTS (SELECT 'X' FROM  SH.customers e WHERE e.country_id = c.country_id)
 
 ## 7. UNION 대신 UNION ALL 사용
 UNION 문은 중복된 열의 존재 유무에 상관없이 열을 선택할 때 중복 검사를 하지만 UNION ALL은 중복검사를 하지 않으므로, UNION 보다는 UNION ALL을 사용하는 것이 빠르다.
+[참조 링크](http://intomysql.blogspot.com/2011/01/union-union-all.html)
 
 Original:
 ```sql
@@ -167,7 +168,6 @@ SELECT cust_id FROM customers;
 
 ## 8. 조인 조건에서는 OR 사용 금지
 조인 조건에 'OR'을 사용할 때마다 쿼리는 최소한 2배 이상 느려진다. OR문을 사용하는 경우에는 Index를 활용한 검색을 하지 못하고, Full-Scan을 하기 때문이다.  
-[참조 링크](http://intomysql.blogspot.com/2011/01/union-union-all.html)
 
 Original:
 ```sql
