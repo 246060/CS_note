@@ -5,8 +5,8 @@
 내용은 여러 블로그의 글과 책을 참고하여 작성하였습니다.  
 
 1. [OS](OS) - 0%
-2. [Database](Database) - 80%
-3. [Network](Network) - 0%
+2. [Database](Database) - 100%
+3. [Network](Network) - 10%
 4. [Software Engineering](Software_Engineering) - 0%
 
 
