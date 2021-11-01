@@ -6,7 +6,7 @@
 
 1. [OS](OS) - 0%
 2. [Database](Database) - 100%
-3. [Network](Network) - 10%
+3. [Network](Network) - 90%
 4. [Software Engineering](Software_Engineering) - 0%
 
 
