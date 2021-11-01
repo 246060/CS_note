@@ -23,7 +23,10 @@
 21. [노드, 호스트, 서버와 클라이언트](https://better-together.tistory.com/74?category=887984)
 
 
-### TODO 정리
+
+<br/><br/><br/>
+
+#### TODO 정리
 1. 네트워크 접속 형태
 2. mac addr와 ip addr 둘 다 필요한 이유
 3. TCP Handshake
