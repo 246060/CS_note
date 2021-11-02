@@ -26,7 +26,7 @@
 
 <br/><br/><br/>
 
-#### TODO 정리
+#### 부록?
 1. 네트워크 접속 형태
 2. mac addr와 ip addr 둘 다 필요한 이유
 3. TCP Handshake
