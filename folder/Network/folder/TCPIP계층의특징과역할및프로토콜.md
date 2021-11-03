@@ -22,28 +22,30 @@
     - [전송 계층의 역할](#전송-계층의-역할)
     - [애플리케이션의 식별과 포트 번호](#애플리케이션의-식별과-포트-번호)
     - [전송 계층의 프로토콜](#전송-계층의-프로토콜)
+      - [TCP](#tcp)
+      - [UDP](#udp)
   - [응용 계층](#응용-계층)
   - [인터넷에서 TCP/IP 프로토콜의 구현](#인터넷에서-tcpip-프로토콜의-구현)
 
 <br/><br/>
 
 # TCP/IP의 4 계층
-인터넷의 핵심인 TCP/IP는 데이터 전송 과정에서의 역할에 따라 응용 계층, 전송 계층, 인터넷 계층, 네트워크 인터페이스 계층이라는 4개의 계층으로 구성됩니다. 크게 ① 데이터 전송을 담당하는 네트워크 인터페이스 계층, 인터넷 계층, 전송 계층과 ② 전송된 데이터의 내용을 보고 사용자가 이용할 수 있는 서비스를 제공하는 응용 계층으로 나눌 수 있습니다.
 
-참조: 인터넷의 핵심인 TCP/IP
+인터넷의 핵심인 TCP/IP는 데이터 전송 과정에서의 역할에 따라 응용 계층, 전송 계층, 인터넷 계층, 네트워크 인터페이스 계층이라는 4개의 계층으로 구성됩니다. 
+
+크게 ① 데이터 전송을 담당하는 네트워크 인터페이스 계층, 인터넷 계층, 전송 계층과 ② 전송된 데이터의 내용을 보고 사용자가 이용할 수 있는 서비스를 제공하는 응용 계층으로 나눌 수 있습니다.
 
 <br/>
 
-응용 계층은 애플리케이션이 제공하는 서비스마다 개별적인 기능을 구현하기 때문에 다른 계층과 달리 하나의 계층으로서 두드러진 특징이 있다기보다 애플리케이션마다 별개로 존재하는 프로토콜들이 독자적인 특징을 갖고 있습니다.
-
-따라서 계층의 특징을 설명하는 이번 포스팅에서는 데이터가 전송되는 과정에서 특징적인 역할을 담당하는 네트워크 인터페이스 계층, 인터넷 계층, 전송계층을 중심으로 살펴보도록 하겠습니다.
+응용 계층은 다른 계층과 달리 하나의 계층으로서 두드러진 특징이 있다기보다 애플리케이션마다 별개로 존재하는 프로토콜들이 독자적인 특징을 갖고 있습니다.
 
 
 
 <br/><br/>
 
 ## 데이터 전송의 기본 요건 - 네트워크의 하드웨어적인 연결
-컴퓨터가 네트워크에서 데이터를 전송하려면 기본적으로 컴퓨터와 네트워크 장비를 전송 매체로 연결한 물리적인 네트워크가 존재해야 합니다. 즉 랜 케이블 같은 전선을 사용해 유선 네트워크를 만들든, 공기 중을 통과하는 전파를 사용해 무선 네트워크를 만들든 일단 컴퓨터와 컴퓨터 사이에 데이터가 이동할 수 있는 통로가 구축되어야 하는 것입니다.
+
+컴퓨터가 네트워크에서 데이터를 전송하려면 기본적으로 컴퓨터와 네트워크 장비를 전송 매체로 연결한 물리적인 네트워크가 존재해야 합니다. 즉 컴퓨터와 컴퓨터 사이에 데이터가 이동할 수 있는 통로가 구축되어야 하는 것입니다.
 
 참조: [네트워크의 구성](컴퓨터네트워크의구성요소3가지.md)
 
@@ -56,29 +58,33 @@
 <br/>
  
 #### 이더넷 
-> 이더넷은 컴퓨터와 네트워크 장비 같은 네트워크용 하드웨어들을 유선으로 연결하기 위한 커넥터나 케이블(전선)의 기계적이고 물리적인 사양, 즉 랜 포트나 랜 케이블 같은 하드웨어 인터페이스의 표준 규격을 의미합니다. 최근 컴퓨터에 탑재되어 있는 유선 네트워크 인터페이스는 거의 100%가 이더넷입니다. 
+> 컴퓨터와 네트워크 장비 같은 네트워크용 하드웨어들을 유선으로 연결하기 위한 커넥터나 케이블(전선)의 기계적이고 물리적인 사양, 즉 랜 포트나 랜 케이블 같은 `하드웨어 인터페이스의 표준 규격`을 의미합니다. 최근 컴퓨터에 탑재되어 있는 유선 네트워크 인터페이스는 거의 100%가 이더넷입니다. 
 
 #### 와이파이
-> 와이파이는 무선 LAN 기술(IEEE802.11)을 이용하여 무선으로 유선 LAN에 접속할 수 있는 표준 규격입니다. 스마트폰, 태블릿, 노트북 등의 컴퓨터에 필수적으로 탑재되어 있는 무선 네트워크 인터페이스입니다.
+> 무선 LAN 기술(IEEE802.11)을 이용하여 `무선으로 유선 LAN에 접속할 수 있는 표준 규격`입니다. 스마트폰, 노트북 등에 탑재되어 있는 `무선 네트워크 인터페이스`입니다.
  
 
 TCP/IP 에서는 <u>**네트워크의 하드웨어적인 연결에 대해서는 특정 프로토콜을 규정하지 않고, 하드웨어를 연결하는 모든 표준 규격과 프로토콜을 지원합니다.**</u> 따라서 TCP/IP 를 사용하는 인터넷에서는 이더넷을 사용하든 와이파이를 사용하든, 심지어 LTE나 5G 같은 이동통신을 사용하든 상관없이 서로 데이터 통신이 가능합니다. 이런 측면에서 TCP/IP 는 물리적으로 연결되어 통신할 수 있는 네트워크를 전제로 만들어진 모델이라 할 수 있습니다.
 
 
+
+
 <br/><br/><br/>
 
 ## TCP/IP를 표준으로 하는 인터넷에서의 데이터 전송과 주소
+
 수많은 컴퓨터와 네트워크 장비가 연결된 인터넷에서 **네트워크 인터페이스 계층**이 ① 물리적으로 직접 연결된 기기 간의 데이터 통신을 제어하고, **인터넷 계층**이 ② 직접 연결되지 않은 컴퓨터까지 데이터를 전송하기 위해 네트워크 간의 데이터 통신을 구현하며, **전송 계층**이 ③ 송신지에서 수신지까지 데이터의 흐름을 제어하고 수신지 컴퓨터에 도착한 데이터가 어떤 애플리케이션에서 사용하는 것인지 판단해서 데이터를 배분함으로써 데이터 통신 기능이 구현됩니다.
 
 <br/> 
 
 ### TCP/IP 데이터 전송 계층들이 사용하는 주소
-전화를 걸기 위해 수신자의 전화번호가 필요하고, 택배 배송을 할 때 배송지 주소가 필요한 것처럼 네트워크에서 데이터를 전송하기 위해서도 수신지를 특정할 주소가 필요합니다. 
+
+네트워크에서 데이터를 전송하기 위해서도 수신지를 특정할 주소가 필요합니다. 
 
 <u>**즉 인터넷에서 데이터 전송을 담당하는 전송 계층, 인터넷 계층, 네트워크 인터페이스 계층에서 데이터 수신지를 식별할 수 있는 고유 주소가 필요합니다.**</u>
 
 <br/><p align = "center">
-<img src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FSSnOF%2FbtqMLRXOMTl%2FMunMpVetBqEjKOCBKV9vP0%2Fimg.png">
+<img src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FSSnOF%2FbtqMLRXOMTl%2FMunMpVetBqEjKOCBKV9vP0%2Fimg.png" style="width:700px;">
 </p>
 <p align = "center">
 <sup><b><그림 1> TCP/IP 데이터 전송에서 사용되는 주소</b></sup>
@@ -110,7 +116,7 @@ TCP/IP 모델 최하층에 위치한 네트워크 인터페이스 계층은 이�
 네트워크 인터페이스 계층이 **직접 연결된 네트워크용 하드웨어 기기 간에 데이터 전송을 제어**함으로써 상위 계층은 하드웨어의 종류에 상관없이 통신할 수 있게 됩니다.
 
 <br/><p align = "center">
-<img src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbCjIpg%2FbtqMNxcXYE8%2Fr83OIxuH8mf8T3jckgU1SK%2Fimg.png">
+<img src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbCjIpg%2FbtqMNxcXYE8%2Fr83OIxuH8mf8T3jckgU1SK%2Fimg.png" style="width:700px;">
 </p>
 <p align = "center">
 <sup><b><그림 2> 네트워크 인터페이스 계층의 역할</b></sup>
@@ -135,7 +141,7 @@ TCP/IP에서는 <u>**네트워크의 하드웨어적인 연결에 대해 모든 
 예를 들어 서버와 클라이언트가 통신을 할 때 서버는 이더넷 프로토콜을, 클라이언트는 무선 LAN 프로토콜을 사용해도 통신이 가능합니다. 이더넷 프로토콜과 무선 LAN 프로토콜이 네트워크 인터페이스 계층에서 사용하는 물리 주소를 MAC 주소라고 합니다. 
 
 <br/><p align = "center">
-<img src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FlTfg0%2FbtqMM3JWRnL%2FAtPReg7fNMXFK7i5tLaKX1%2Fimg.png">
+<img src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FlTfg0%2FbtqMM3JWRnL%2FAtPReg7fNMXFK7i5tLaKX1%2Fimg.png" style="width:700px;">
 </p>
 <p align = "center">
 <sup><b><그림 3> 네트워크 인터페이스 계층의 프로토콜</b></sup>
@@ -159,7 +165,7 @@ TCP/IP에서는 <u>**네트워크의 하드웨어적인 연결에 대해 모든 
 참조: [네트워크 형태](네트워크의종류3가지.md)
 
 <br/><p align = "center">
-<img src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FVEJzu%2FbtqMMiVbR0I%2FAANa3OJ8WqxJMG9g1IZtvK%2Fimg.png">
+<img src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FVEJzu%2FbtqMMiVbR0I%2FAANa3OJ8WqxJMG9g1IZtvK%2Fimg.png" style="width:700px;">
 </p>
 <p align = "center">
 <sup><b><그림 4> 라우터의 역할</b></sup>
@@ -177,7 +183,7 @@ TCP/IP에서는 <u>**네트워크의 하드웨어적인 연결에 대해 모든 
 각 호스트는 **인터넷에 연결된 호스트를 식별하기 위해 유일한 번호**로 부여된 **IP 주소**를 갖고 있고, **라우터는 이 IP 주소를 기반으로 송신지 호스트에서 수신지 호스트까지 데이터를 전송할 경로를 찾아갑니다.** 따라서 **인터넷으로 연결된 모든 호스트와 중간 노드인 라우터는 반드시 IP 계층의 기능을 갖고 있어야 합니다.** 
 
 <br/><p align = "center">
-<img src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FD60Na%2FbtqMMG9jnnT%2F4SYzHLbC9LLXEqPVXzYLzK%2Fimg.png">
+<img src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FD60Na%2FbtqMMG9jnnT%2F4SYzHLbC9LLXEqPVXzYLzK%2Fimg.png" style="width:700px;">
 </p>
 <p align = "center">
 <sup><b><그림 5> 인터넷 계층의 역할과</b></sup>
@@ -196,7 +202,7 @@ TCP/IP에서는 <u>**네트워크의 하드웨어적인 연결에 대해 모든 
 인터넷 계층에서 사용하는 IP주소와 라우팅에 대해 규정한 프로토콜이 IP입니다. 오늘날 대부분의 네트워크가 사용하는 IP 프로토콜은 인터넷을 통한 데이터 통신을 가능하게 하는 가장 중요한 프로토콜입니다.
 
 <br/><p align = "center">
-<img src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FXQ9v2%2FbtqMN3CIadW%2FLPNOlcL1krYe393KFYsIZ1%2Fimg.png">
+<img src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FXQ9v2%2FbtqMN3CIadW%2FLPNOlcL1krYe393KFYsIZ1%2Fimg.png" style="width:700px;">
 </p>
 <p align = "center">
 <sup><b><그림 6> 라우팅과 IP 프로토콜</b></sup>
@@ -214,21 +220,22 @@ TCP/IP에서는 <u>**네트워크의 하드웨어적인 연결에 대해 모든 
 <br/>
 
 ### 전송 계층의 역할
-네트워크 인터페이스 계층과 인터넷 계층은 정확한 데이터의 수신지 컴퓨터까지 최적의 경로를 찾아 데이터를 전송할 뿐 데이터 전송의 신뢰성이나 수신지 컴퓨터 내에서 데이터의 배분에는 관여하지 않습니다. 전송 과정에서 데이터의 손상이나 유실없이 제대로 전달되는지, 데이터가 효율적으로 전달되는지, 목적지 컴퓨터 내의 어떤 애플리케이션에 데이터를 전달해야 하는지는 전송 계층에서 처리합니다. 웹 브라우저로 여러 개의 웹사이트에 접속하거나 웹 브라우저뿐만 아니라 카카오톡 등 여러 애플리케이션으로 동시에 인터넷을 사용하더라도 문제없이 애플리케이션이 동작하는 것은 바로 이 전송 계층의 역할 덕분입니다.
-
+전송 과정에서 데이터의 손상이나 유실없이 제대로 전달되는지, 데이터가 효율적으로 전달되는지, 목적지 컴퓨터 내의 어떤 애플리케이션에 데이터를 전달해야 하는지는 전송 계층에서 처리합니다. 
  
 <br/>
 
 ### 애플리케이션의 식별과 포트 번호
 
 <br/><p align = "center">
-<img src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbEfHfv%2FbtqMPhtHzF1%2FNeMKwBwcIH70tqjkYVwh51%2Fimg.png">
+<img src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbEfHfv%2FbtqMPhtHzF1%2FNeMKwBwcIH70tqjkYVwh51%2Fimg.png" style="width:700px;">
 </p>
 <p align = "center">
 <sup><b><그림 7> 전송 계층의 역할과 포트 번호</b></sup>
 </p><br/>
 
-데이터를 실행시키는 **애플리케이션을 식별**할 수 있는 주소 내지 번호를 **포트 번호**라고 합니다. 전송 계층에서는 포트 번호로 송신지 애플리케이션에서 보낸 데이터가 수신지 컴퓨터의 어떤 애플리케이션으로 전송되어야 할지를 식별합니다.
+데이터를 실행시키는 **애플리케이션을 식별**할 수 있는 주소 내지 번호를 **포트 번호**라고 합니다. 
+
+전송 계층에서는 포트 번호로 송신지 애플리케이션에서 보낸 데이터가 수신지 컴퓨터의 어떤 애플리케이션으로 전송되어야 할지를 식별합니다.
 
 
 
@@ -238,7 +245,7 @@ TCP/IP에서는 <u>**네트워크의 하드웨어적인 연결에 대해 모든 
 ### 전송 계층의 프로토콜
 
 <br/><p align = "center">
-<img src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcWaj1U%2FbtqMNv0wvuG%2FfsJ0RieKncZFkK41d8k6EK%2Fimg.png">
+<img src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcWaj1U%2FbtqMNv0wvuG%2FfsJ0RieKncZFkK41d8k6EK%2Fimg.png" style="width:700px;">
 </p>
 <p align = "center">
 <sup><b><그림 8> 전송 계층의  TCP 프로토콜</b></sup>
@@ -246,9 +253,14 @@ TCP/IP에서는 <u>**네트워크의 하드웨어적인 연결에 대해 모든 
 
 전송 계층에는 데이터 전송의 신뢰성이나 효율성을 중시하는지 여부에 따라서 크게 TCP와 UDP프로토콜이 사용됩니다. 
 
-신뢰할 수 있고 정확한 데이터를 전달하기 위해 전송 속도를 조절하거나 도달하지 않은 데이터를 재전송하는 기능을 하는 프로토콜이 TCP, 데이터의 일부가 유실되더라도 빠르고 효율적으로 데이터를 전송하는 프로토콜이 UDP(User Datagram Protocol)입니다. 
+#### TCP
+- 신뢰할 수 있고 정확한 데이터를 전달하기 위해 전송 속도를 조절하거나 도달하지 않은 데이터를 재전송하는 기능
+- 웹이나 이메일과 같이 데이터의 신뢰성과 정확성이 중요한 애플리케이션
 
-웹이나 이메일과 같이 데이터의 신뢰성과 정확성이 중요한 애플리케이션에서는 TCP를 사용하고, 동영상 스트리밍 서비스와 같이 데이터가 늦게 도착해서 버벅거리는 동영상을 보는 것보다 데이터가 일부 유실되더라도 원활하게 볼 수 있도록 빠른 데이터 전송이 필요한 애플리케이션에서는 UDP를 사용합니다.
+#### UDP
+- 데이터의 일부가 유실되더라도 빠르고 효율적으로 데이터를 전송
+- 동영상 스트리밍 서비스와 같이 데이터가 늦게 도착해서 버벅거리는 동영상을 보는 것보다 데이터가 일부 유실되더라도 원활하게 볼 수 있도록 빠른 데이터 전송이 필요한 애플리케이션
+
 
 
 
@@ -257,14 +269,14 @@ TCP/IP에서는 <u>**네트워크의 하드웨어적인 연결에 대해 모든 
 <br/><br/><br/>
 
 ## 응용 계층
-응용 계층은 애플리케이션의 기능을 실행하기 위해 애플리케이션이 다루는 데이터 형식과 처리 순서를 결정하여 사용자에게 서비스를 제공하는 역할을 합니다. 전송 계층으로부터 분배받은 디지털 데이터를 사용자가 이해할 수 있는 표현 형식인 문자, 음성, 동영상 같은 형태로 변환하여 애플리케이션이 제공하고자 하는 기능을 동작하게 하는 것입니다.
+응용 계층은 애플리케이션의 기능을 실행하기 위해 애플리케이션이 다루는 데이터 형식과 처리 순서를 결정하여 사용자에게 서비스를 제공하는 역할을 합니다. 
 
-응용 계층은 이름처럼 애플리케이션이 제공하는 서비스마다 개별적인 기능을 구현하기 때문에 다른 계층과 달리 하나의 계층으로서 두드러진 특징이 있다기보다 애플리케이션마다 별개로 존재하는 프로토콜이 독자적인 특징을 갖고 있습니다. 따라서 애플리케이션의 종류만큼 다양한 프로토콜이 존재합니다.
+전송 계층으로부터 분배받은 디지털 데이터를 사용자가 이해할 수 있는 표현 형식인 문자, 음성, 동영상 같은 형태로 변환하여 애플리케이션이 제공하고자 하는 기능을 동작하게 하는 것입니다.
 
-대표적으로 웹서비스를 제공할 때는 HTTP, 파일을 전송할 때는 FTP, 메일을 보낼 때는 SMTP, 메일을 받을 때는 POP3라는 프로토콜을 사용합니다.
+애플리케이션이 제공하는 서비스마다 개별적인 기능을 구현하기 때문에 다른 계층과 달리 하나의 계층으로서 두드러진 특징이 있다기보다 애플리케이션마다 별개로 존재하는 프로토콜이 독자적인 특징을 갖고 있습니다. 따라서 애플리케이션의 종류만큼 다양한 프로토콜이 존재합니다.
 
 <br/><p align = "center">
-<img src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbHJpTl%2FbtqMLSPSyH5%2FdpJCG7GOiyBmdYSKvbfLn1%2Fimg.png">
+<img src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbHJpTl%2FbtqMLSPSyH5%2FdpJCG7GOiyBmdYSKvbfLn1%2Fimg.png" style="width:700px;">
 </p>
 <p align = "center">
 <sup><b><그림 9> 응용 계층과 HTTP 프로토콜</b></sup>
@@ -278,7 +290,7 @@ TCP/IP에서는 <u>**네트워크의 하드웨어적인 연결에 대해 모든 
 ## 인터넷에서 TCP/IP 프로토콜의 구현
 
 <br/><p align = "center">
-<img src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fd5joBB%2FbtqMOyoY2fV%2F3xpLBPoYWXDSc3zZNISEE1%2Fimg.png">
+<img src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fd5joBB%2FbtqMOyoY2fV%2F3xpLBPoYWXDSc3zZNISEE1%2Fimg.png" style="width:700px;">
 </p>
 <p align = "center">
 <sup><b><그림 10>인터넷에서 TCP/IP 프로토콜의 구현</b></sup>
