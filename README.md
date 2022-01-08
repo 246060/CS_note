@@ -8,9 +8,10 @@
 2. [Database](folder/Database) - 100%
 3. [Network](folder/Network) - 90%
 4. [Software Engineering](folder/Software_Engineering) - 0%
+5. [ETC](folder/etc)
 
 
+<!-- 
 Reference
-
 - https://gyoogle.dev/blog/
-
+ -->

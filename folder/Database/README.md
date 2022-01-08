@@ -14,7 +14,8 @@
  12. [효율적인 쿼리 작성-1](folder/효율적인_쿼리_작성_Tip-1.md)
  13. [효율적인 쿼리 작성-2](folder/효율적인_쿼리_작성_Tip-2.md)
  14. [운영 고려사항](folder/운영Tip.md)
-
+ 15. [Mysql lock](folder/lock.md)
+ 16. [기타](folder/etc.md)
 
 <br/><br/><br/><br/>
 
