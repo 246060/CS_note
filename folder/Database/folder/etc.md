@@ -15,8 +15,8 @@
     - [버퍼 풀의 크기 (innodb_buffer_pool_size)](#버퍼-풀의-크기-innodb_buffer_pool_size)
     - [버퍼 풀 인스턴스 수 (innodb_buffer_pool_instances)](#버퍼-풀-인스턴스-수-innodb_buffer_pool_instances)
     - [버퍼 관리자](#버퍼-관리자)
+    - [데이터 페이지 버퍼링](#데이터-페이지-버퍼링)
   - [6. db log 종류](#6-db-log-종류)
-
 
 ## 1. Data block
 - logical block
@@ -171,6 +171,14 @@ CPU 코어 수가 많은 시스템일수록 인스턴스 수를 늘릴 수 있�
 
 2. 그 후 요청된 블록을 디스크에서 버퍼로 읽어와서 메인 메모리의 블록 주소를 요청한 프로세스에 전달한다. 
 
+
+### 데이터 페이지 버퍼링
+
+WAL(Write Ahead Logging)
+버퍼에 자리가 없어서 vicitm block 을 선정하여 쫓아내는데 해당 블럭에 아직 커밋되지 않은 데이터가 있을 수 있음
+그런 경우 버퍼의 로그 정보를 반드시 먼저 디스크에 저장하고, 해당 블럭을 쫓아내는 기법을 WAL 이라 함
+
+Latches : victim 으로 선정된 블럭에 write 하면 연산이 꼬이므로 이를 막기 위해 X-lock 을 잠시 거는것
 
 ## 6. db log 종류
    1. 에러 로그(error log)
