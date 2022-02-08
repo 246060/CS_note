@@ -17,6 +17,7 @@
     - [버퍼 관리자](#버퍼-관리자)
     - [데이터 페이지 버퍼링](#데이터-페이지-버퍼링)
   - [6. db log 종류](#6-db-log-종류)
+    - [한 번씩 읽어보기 좋은 글](#한-번씩-읽어보기-좋은-글)
 
 ## 1. Data block
 - logical block
@@ -26,6 +27,16 @@
 
 ## 2. [MySql storage engine](https://velog.io/@gillog/DBInnoDB-VS-MyISAM)
 ### innodb 
+
+![5.6](https://raw.githubusercontent.com/kimdubi/kimdubi.github.io/master/images/mysql/56.png)
+(출처 : MySQL 5.6 공식 Doc)
+
+![5.7](https://blog.kakaocdn.net/dn/wWjDm/btq1pzfZDty/vZEk2Xf6FZkVZ54n5LiMZK/img.png)  
+(출처 : MySQL 5.7 공식 Doc)
+
+![8.0](https://dev.mysql.com/doc/refman/8.0/en/images/innodb-architecture.png)  
+(출처 : MySQL 8.0 공식 Doc)
+
 - 트랜젝션에 안전한 테이블을 제공하는 트랜잭션-세이프 스토리지 엔진
 - 디폴트
 - 자체적으로 메인 메모리 안에 데이터 캐싱과 인덱싱을 위한 버퍼 풀(pool)을 관리
@@ -188,3 +199,10 @@ Latches : victim 으로 선정된 블럭에 write 하면 연산이 꼬이므로 
    5. 릴레이 로그(relay log)
 
 
+### 한 번씩 읽어보기 좋은 글
+1. https://jeong-pro.tistory.com/239
+2. https://jeong-pro.tistory.com/246?category=800472
+3. https://jeong-pro.tistory.com/245?category=800472
+4. https://jeong-pro.tistory.com/243?category=800472
+5. https://jeong-pro.tistory.com/241?category=800472
+6. https://jeong-pro.tistory.com/242?category=800472

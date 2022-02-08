@@ -1,4 +1,5 @@
 # DB Index
+TODO : 다시 정리해야겟다. 맘에 안든다.
 
 1. 목적
 2. 과정
@@ -21,18 +22,27 @@ Table의 Column을 색인화 함 (따로 파일로 저장)
 <br/><br/>
 
 ## 과정
-Table을 생성하면, MYD, MYI, FRM 3개의 파일이 생성됨.
+
+
+MyISAM Table을 생성하면, frm, MYD, MYI 3개의 파일이 생성됨.
 
 - FRM : 테이블 구조가 저장되어 있는 파일
 - MYD : 실제 데이터가 있는 파일
 - MYI : Index 정보가 들어가 있는 파일
-
 
 Index를 사용하지 않는 경우, MYI 파일은 비어져 있음.  
 그러나, 인덱싱하는 경우 MYI 파일이 생성됨.
 
 이후에 사용자가 Select 쿼리로 Index를 사용하는 Column을 탐색 시,  
 MYI 파일의 내용을 검색함.
+
+
+InnoDB Table을 생성하면, frm 과 ibd로 구성된다.
+
+- frm : 테이블 구조가 저장되어 있는 파일
+- ibd : 데이터 + 인덱스 (테이블 스페이스)
+  - 그외 undo 로그, insert buffer, double write buffer 도 있음
+
 
 
 #### 단점
